@@ -1,19 +1,35 @@
-import React, { createElement } from "react";
+import React, { Component } from "react";
 import ReactDOM from "react-dom";
 
-const tasks = [
-  "take out the trash",
-  "carrying on the trash",
-  "take out the trash",
-  "wash the dishes",
-];
-//creating  'ol' in createElement---> create a order list in React
-const element = (
-  <ol>
-    {tasks.map((tasks, index) => 
-      <li key={index}>{tasks}</li>
-    )}
-  </ol>
-);
 
-ReactDOM.render(element, document.getElementById("root"));
+
+class List extends Component {
+  render() {
+    return (
+      <ol>
+        {this.props.tasks.map((task, index) => (
+          <li key={index}>{task}</li>
+        ))}
+      </ol>
+    );
+  }
+}
+class Title extends Component {
+  render() {
+    return <h1> Task List</h1>;
+  }
+}
+class Main extends Component {
+  render() {
+    return (
+      <div>
+        <Title />
+        <List tasks={['mow the law', 'walk the dog']} />
+        <List tasks={['hose the driveway', 'finish the laundry']} />
+        <List />
+      </div>
+    );
+  }
+}
+
+ReactDOM.render(<Main />, document.getElementById("root"));
