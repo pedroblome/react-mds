@@ -1,17 +1,19 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React, { createElement } from "react";
+import ReactDOM from "react-dom";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+const tasks = [
+  "take out the trash",
+  "carrying on the trash",
+  "take out the trash",
+  "wash the dishes",
+];
+//creating  'ol' in createElement---> create a order list in React
+const element = (
+  <ol>
+    {tasks.map((tasks, index) => 
+      <li key={index}>{tasks}</li>
+    )}
+  </ol>
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+ReactDOM.render(element, document.getElementById("root"));
